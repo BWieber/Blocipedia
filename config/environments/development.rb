@@ -13,8 +13,23 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  #Default Mailer Options
+  config.action_mailer.delivery_method = :smtp
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.default :charset => "utf-8"
+
+config.action_mailer.smtp_settings = {
+address: "smtp.gmail.com", #this is you remote mail server, if you do not specify it rails will use
+# mail server installed in your localhost
+port: 587, # the port at which mail server is running, for local host it is at 25
+domain: "example.com", # just giving a domain name to you smtp server, you can use any name
+authentication: "plain", # If your mail server requires authentication, you need to specify
+# the authentication type here.This is a symbol and one of :plain, :login, :cram_md5.
+enable_starttls_auto: true,
+user_name: "xyz@yopmail.com",
+password:  "test123"
+}
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
