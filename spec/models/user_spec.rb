@@ -29,6 +29,7 @@ RSpec.describe User, :type => :model do
   end
 
   describe "invalid user" do
+
   let(:user_with_invalid_name) { User.new(name: "", email: "user@bloccit.com") }
   let(:user_with_invalid_email) { User.new(name: "Bloccit User", email: "") }
   let(:user_with_invalid_email_format) { User.new(name: "Bloccit User", email: "invalid_format") }
@@ -43,6 +44,17 @@ RSpec.describe User, :type => :model do
 
     it "should be an invalid user due to incorrectly formatted email address" do
       expect(user_with_invalid_email_format).to_not be_valid
+    end
+  end
+
+  describe "after_create" do
+    before do
+      @another_user = User.new(name: "Blochead", email: 'blochead@io.com', password: 'helloworld', password_digest: 'helloworld')
+    end
+
+    it "sends an email to new users" do 
+      expect(UserMailer).to receive(:new_user).with(@another_user).and_return(double(deliver_now: true))
+      @another_user.save
     end
   end
 end

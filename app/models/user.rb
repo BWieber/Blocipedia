@@ -4,10 +4,17 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  
   before_save { self.email = email.downcase }
   before_save { self.role ||= :member }
 
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   enum role: [:member, :admin]
+
+  private
+
+  def send_user_emails
+    UserMailer.new_user(@user).deliver_now
+  end
 end
