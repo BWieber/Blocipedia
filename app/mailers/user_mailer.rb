@@ -1,4 +1,4 @@
-class UserMailer < ApplicationMailer
+class UserMailer < ActionMailer::Base
   default from: "brandon.m.wieber@gmail.com"
 
   def new_user(user)

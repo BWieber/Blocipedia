@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  after_create :send_user_emails
   
   before_save { self.email = email.downcase }
   before_save { self.role ||= :member }
@@ -15,6 +16,6 @@ class User < ActiveRecord::Base
   private
 
   def send_user_emails
-    UserMailer.new_user(@user).deliver_now
+    UserMailer.new_user(self).deliver_now
   end
 end

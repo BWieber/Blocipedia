@@ -52,7 +52,7 @@ RSpec.describe User, :type => :model do
       @another_user = User.new(name: "Blochead", email: 'blochead@io.com', password: 'helloworld', password_digest: 'helloworld')
     end
 
-    it "sends an email to new users" do 
+    it "sends an email to new users" do
       expect(UserMailer).to receive(:new_user).with(@another_user).and_return(double(deliver_now: true))
       @another_user.save
     end
