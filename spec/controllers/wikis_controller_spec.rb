@@ -7,11 +7,7 @@ RSpec.describe WikisController, type: :controller do
   let(:user)    { create(:user) }
 
   context "member doing CRUD action on wikis" do
-    before do
-      sign_in(:user, User.find(params[:id]))
-    end
-
-
+  
   describe "GET #show" do
     it "returns http success" do
       get :show, id: my_wiki.id
