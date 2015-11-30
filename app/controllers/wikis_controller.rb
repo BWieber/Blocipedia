@@ -1,5 +1,6 @@
 class WikisController < ApplicationController
-  skip_before_filter :authenticate_user!
+
+  before_filter :authenticate_user!, except: [ :index, :show ]
 
   def index
     @wikis = Wiki.all
