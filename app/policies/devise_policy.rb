@@ -1,4 +1,4 @@
-class WikiPolicy < ApplicationPolicy
+class DevisePolicy < ApplicationPolicy
 
   def update?
     user.present?
