@@ -47,6 +47,8 @@ group :development do
   gem 'web-console', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  # Faker allows the creation of various fake data
+  gem 'faker'
 end
 
 group :development, :test do
@@ -55,4 +57,5 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'shoulda'
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'faker'
 end
