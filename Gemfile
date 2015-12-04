@@ -24,6 +24,8 @@ gem 'figaro', '1.0'
 gem 'jquery-rails'
 # Use Pundit to help with authorization and users
 gem 'pundit'
+# Use Rolify to change and add roles simply
+gem 'rolify'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
