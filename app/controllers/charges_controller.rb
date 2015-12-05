@@ -18,7 +18,9 @@ class ChargesController < ApplicationController
     currency: 'usd'
   )
 
-  @user.role = :premium
+  @user.update_attributes(role: 'premium')
+  #@user.role = 'premium'
+  #@user.save
 
   flash[:notice] = "Thanks for the payment, #{current_user.email}! You can now create and edit private wikis."
   redirect_to root_path

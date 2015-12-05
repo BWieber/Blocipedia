@@ -10,7 +10,11 @@ Rails.application.routes.draw do
 
   root to: 'welcome#index'
 
-  resources :users
+  resources :users do
+    member do
+      post :downgrade
+    end
+  end
 
   resources :wikis
 
