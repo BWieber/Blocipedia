@@ -40,9 +40,17 @@
 }
 
 .box-solid {
-  width: 200px;
-  height: 100px;
-  border: solid 1px lavender;
+  width: 500px;
+  height: 115px;
+  margin-left: 300px;
+  margin-top: 70px;
+}
+
+.wiki-show {
+    width: 800px;
+    height: 115px;
+    margin-left: 160px;
+    margin-top: 150px;
 }
 
 .free-location {
@@ -61,12 +69,14 @@
   margin-left: 320px;
 }
 
-
-
 .right-center {
   margin-right: 150px;
 }
 
 .btn-center {
   margin-left: 115px;
+}
+
+.wiki-center {
+  margin-left: 450px;
 }
