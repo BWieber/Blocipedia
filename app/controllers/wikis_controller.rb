@@ -6,21 +6,19 @@ class WikisController < ApplicationController
   after_action :verify_authorized, :except => :index
 
   def index
-    @wikis = Wiki.all
-    @wikis = Wiki.visible_to(current_user)
-
-    if current_user.premium? || current_user.admin?
-      @wikis = Wiki.all
-    end
-
+    @wikis = policy_scope(Wiki)
   end
 
   def show
     @wiki = Wiki.find(params[:id])
+
+    @collaboration = @wiki.collaborators.map { |c| [c.email, c.id] }
+
     authorize @wiki
   end
 
   def new
+    @user_options = User.all.map { |u| [ u.email, u.id] }
     @wiki = Wiki.new
     authorize @wiki
   end
@@ -28,6 +26,7 @@ class WikisController < ApplicationController
   def create
     @wiki = Wiki.create(wiki_params)
     @wiki.user = current_user
+    @user_options = User.all.map { |u| [ u.email, u.id] }
     authorize @wiki
 
     if @wiki.save
@@ -73,7 +72,7 @@ class WikisController < ApplicationController
  private
 
   def wiki_params
-    params.require(:wiki).permit(:title, :body, :private )
+    params.require(:wiki).permit(:title, :body, :private, :collaborator)
   end
 
 end
