@@ -11,9 +11,7 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
-
-    @collaboration = @wiki.collaborators.map { |c| [c.email, c.id] }
-
+    @collaboration = @wiki.collaborators.new
     authorize @wiki
   end
 
@@ -72,7 +70,7 @@ class WikisController < ApplicationController
  private
 
   def wiki_params
-    params.require(:wiki).permit(:title, :body, :private, :collaborator)
+    params.require(:wiki).permit(:title, :body, :private, :user)
   end
 
 end
