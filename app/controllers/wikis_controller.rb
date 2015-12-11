@@ -1,7 +1,7 @@
 class WikisController < ApplicationController
   include ApplicationHelper
 
-  before_filter :authenticate_user!, except: [ :index, :show ]
+  before_filter :authenticate_user!
 
   after_action :verify_authorized, :except => :index
 

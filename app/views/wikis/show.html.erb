@@ -1,7 +1,7 @@
 <div class="wiki-show">
   <h1> <%= markdown(@wiki.title) %> </h1>
     <small>
-      submitted <%= time_ago_in_words(@wiki.created_at) %> ago by <%= 'FIX' %>
+      submitted <%= time_ago_in_words(@wiki.created_at) %>
     </small>
     <div class="col-md-16">
       <p><%= markdown(@wiki.body) %></p>
