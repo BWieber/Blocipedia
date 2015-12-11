@@ -4,6 +4,10 @@ class WikiPolicy < ApplicationPolicy
     user.present?
   end
 
+  def destroy?
+    record.user == user || user.role == 'admin'
+  end
+
   def new?
     user.present?
   end

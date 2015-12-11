@@ -1,4 +1,12 @@
 class UsersController < ApplicationController
+
+  def index
+    @users = User.all
+  end
+
+  def show
+  end
+
   def new
     @user = User.new
   end
@@ -36,15 +44,6 @@ class UsersController < ApplicationController
     @user_wikis.each do |makepub|
       makepub.update_attributes(private: false)
     end
-  end
-
-
-
-  def index
-    @users = User.all
-  end
-
-  def show
   end
 
 end

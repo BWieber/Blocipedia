@@ -1,16 +1,16 @@
 class CollaboratorsController < ApplicationController
-  
+
   def new
-    @wiki = Wiki.find(params[:wiki_id])
-    @collaboration = Collaborator.new
+    @collaborator = Collaborator.new
   end
 
   def create
     @wiki = Wiki.find(params[:wiki_id])
-    @collaboration = Collaborator.new(collaboration_params)
-    @collaboration.wiki = @wiki
+    @user = User.find_by(email: params[:email])
+    @collaborator = @wiki.collaborators.build(user_id: @user.id)
 
-    if @collaboration.save
+
+    if @collaborator.save
       flash[:notice] = "Collaborator was added to this wiki."
       redirect_to @wiki
     else
@@ -20,10 +20,9 @@ class CollaboratorsController < ApplicationController
    end
 
   def destroy
-    @wiki = Wiki.find(params[:wiki_id])
     @collaboration = Collaborator.find(params[:id])
 
-    if @collaboration.destroy
+    if @collaborator.destroy
       flash[:notice] = "Collaborator was removed from this wiki."
       redirect_to @wiki
     else
@@ -31,11 +30,5 @@ class CollaboratorsController < ApplicationController
       render :show
     end
    end
-
-  private
-
-  def collaboration_params
-    params.require(:collaborator).permit(:user_id)
-  end
 
 end
