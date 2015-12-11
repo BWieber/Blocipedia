@@ -1,13 +1,12 @@
 class CollaboratorsController < ApplicationController
+  before_action :set_wiki
 
   def new
     @collaborator = Collaborator.new
   end
 
   def create
-    @wiki = Wiki.find(params[:wiki_id])
-    @user = User.find_by(email: params[:email])
-    @collaborator = @wiki.collaborators.build(user_id: @user.id)
+    @collaborator = Collaborator.new(wiki_id: @wiki.id, user_id: params[:user_id])
 
 
     if @collaborator.save
@@ -20,7 +19,8 @@ class CollaboratorsController < ApplicationController
    end
 
   def destroy
-    @collaboration = Collaborator.find(params[:id])
+    # @wiki.users.delete(user)
+    @collaborator = Collaborator.find(params[:id])
 
     if @collaborator.destroy
       flash[:notice] = "Collaborator was removed from this wiki."
@@ -29,6 +29,14 @@ class CollaboratorsController < ApplicationController
       flash[:error] = "Collaborator was not removed. Please try again."
       render :show
     end
-   end
+  end
+
+  private
+
+  def set_wiki
+    @wiki = Wiki.find(params[:wiki_id])
+  end
+
+
 
 end
