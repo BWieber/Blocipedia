@@ -22,7 +22,7 @@ class WikisController < ApplicationController
 
   def create
     @user = current_user
-    @wiki = current_user.wiki.build(wiki_params)
+    @wiki = Wiki.new(wiki_params)
     @wiki.user = current_user
     authorize @wiki
 
@@ -72,7 +72,7 @@ class WikisController < ApplicationController
  private
 
   def wiki_params
-    params.require(:wiki).permit(:title, :body, :private, :public, :user)
+    params.require(:wiki).permit(:title, :body, :private, :user)
   end
 
 end
