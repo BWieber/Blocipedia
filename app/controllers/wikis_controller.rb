@@ -46,6 +46,7 @@ class WikisController < ApplicationController
     authorize @wiki
 
     @wiki.assign_attributes(wiki_params)
+    @wiki.user_ids = params[:wiki][:user_ids] if params[:wiki][:user_ids].present?
 
     if @wiki.save
       flash[:notice] = "Wiki was updated."
@@ -72,7 +73,7 @@ class WikisController < ApplicationController
  private
 
   def wiki_params
-    params.require(:wiki).permit(:title, :body, :private, :user)
+    params.require(:wiki).permit(:title, :body, :private, :user, :user_ids)
   end
 
 end

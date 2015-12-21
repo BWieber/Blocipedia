@@ -8,16 +8,7 @@ include Faker
     password: Faker::Internet.password
     )
   end
-  users = User.all
 
-# Create Wikis
-  15.times do
-    Wiki.create!(
-      title: Faker::Lorem.sentence,
-      body: Faker::Lorem.paragraph
-    )
-  end
-  wikis = Wiki.all
 
   # Create an admin member
   admin = User.create!(
@@ -44,7 +35,20 @@ include Faker
     email:    'premium2@example.com',
     password: 'helloworld',
     role:     'premium'
+  )
+
+  users = User.all
+
+  # Create Wikis
+  15.times do
+    Wiki.create!(
+      title: Faker::Lorem.sentence,
+      body: Faker::Lorem.paragraph,
+      user: users.sample
     )
+  end
+  wikis = Wiki.all
+
 
 puts "Seed finished"
 puts "#{User.count} users created."
