@@ -16,10 +16,18 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# Stripe is used to handle in app payments
+gem 'stripe'
+# Used to help set environment variables
+gem 'figaro', '1.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Use Pundit to help with authorization and users
 gem 'pundit'
+# Use Rolify to change and add roles simply
+gem 'rolify'
+# Allows the use of markdown
+gem 'redcarpet'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -47,8 +55,6 @@ group :development do
   gem 'web-console', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  # Faker allows the creation of various fake data
-  gem 'faker'
 end
 
 group :development, :test do

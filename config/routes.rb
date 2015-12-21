@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'charges/create'
+
   devise_for :users
 
   get 'welcome/index'
@@ -8,8 +10,14 @@ Rails.application.routes.draw do
 
   root to: 'welcome#index'
 
-  resources :users
+  resources :users do
+    member do
+      post :downgrade
+    end
+  end
 
   resources :wikis
+
+  resources :charges, only: [:new, :create]
 
 end
