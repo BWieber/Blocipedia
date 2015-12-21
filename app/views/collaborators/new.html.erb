@@ -1,6 +1,6 @@
 <h1>Add Collaborator</h1>
 
-<%= form_for [@wiki, @collaboration] do |f| %>
+<%= form_for [@wiki] do |f| %>
 
   <% if @wiki.errors.any? %>
      <div class="alert alert-danger">
@@ -13,9 +13,14 @@
      </div>
   <% end %>
 
-  <%= form_group_tag(@wiki.errors[:user]) do %>
-    <%= f.label :user %>
-    <%= f.select :user_id, options_from_collection_for_select(User.all, "id", "email") %>
+  <% byebug %>
+  <%= collection_check_boxes(:wiki, :user_ids, User.all - [f.object.user], :id, :email) do |u| %>
+    <div class="checkbox">
+      <%= u.label do %>
+        <%= u.check_box %>
+        <%= u.object.email %>
+      <% end %>
+    </div>
   <% end %>
 
   <div class="form-group">
