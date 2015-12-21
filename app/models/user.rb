@@ -7,11 +7,11 @@ class User < ActiveRecord::Base
   has_many :wikis
 
   before_save { self.email = email.downcase }
-  before_save { self.role ||= :member }
+  after_initialize { self.role ||= :standard }
 
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  enum role: [:member, :admin]
+  enum role: [:standard, :admin, :premium]
 
   private
 
