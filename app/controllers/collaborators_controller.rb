@@ -1,16 +1,15 @@
 class CollaboratorsController < ApplicationController
-  
+  before_action :set_wiki
+
   def new
-    @wiki = Wiki.find(params[:wiki_id])
-    @collaboration = Collaborator.new
+    @collaborator = Collaborator.new
   end
 
   def create
-    @wiki = Wiki.find(params[:wiki_id])
-    @collaboration = Collaborator.new(collaboration_params)
-    @collaboration.wiki = @wiki
+    @collaborator = Collaborator.new(wiki_id: @wiki.id, user_id: params[:user_id])
 
-    if @collaboration.save
+
+    if @collaborator.save
       flash[:notice] = "Collaborator was added to this wiki."
       redirect_to @wiki
     else
@@ -20,22 +19,24 @@ class CollaboratorsController < ApplicationController
    end
 
   def destroy
-    @wiki = Wiki.find(params[:wiki_id])
-    @collaboration = Collaborator.find(params[:id])
+    # @wiki.users.delete(user)
+    @collaborator = Collaborator.find(params[:id])
 
-    if @collaboration.destroy
+    if @collaborator.destroy
       flash[:notice] = "Collaborator was removed from this wiki."
       redirect_to @wiki
     else
       flash[:error] = "Collaborator was not removed. Please try again."
       render :show
     end
-   end
+  end
 
   private
 
-  def collaboration_params
-    params.require(:collaborator).permit(:user_id)
+  def set_wiki
+    @wiki = Wiki.find(params[:wiki_id])
   end
+
+
 
 end

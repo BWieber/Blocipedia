@@ -5,8 +5,9 @@ RSpec.describe WikisController, type: :controller do
 
   let(:my_wiki) { create(:wiki) }
 
-  let :user do
-  User.create!(email: "me@home.com", password: "watching the telly")
+  before :example do
+  u = User.create!(email: "me@home.com", password: "watching the telly")
+  sign_in u
   end
 
   context "member doing CRUD action on wikis" do
@@ -63,7 +64,7 @@ RSpec.describe WikisController, type: :controller do
     end
   end
 
-  
+
 end
 
 end

@@ -1,7 +1,7 @@
 class WikisController < ApplicationController
   include ApplicationHelper
 
-  before_filter :authenticate_user!, except: [ :index, :show ]
+  before_filter :authenticate_user!
 
   after_action :verify_authorized, :except => :index
 
@@ -11,31 +11,33 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
-    @collaboration = @wiki.collaborators.new
     authorize @wiki
   end
 
   def new
-    @user_options = User.all.map { |u| [ u.email, u.id] }
+    @user = current_user
     @wiki = Wiki.new
     authorize @wiki
   end
 
   def create
-    @wiki = Wiki.create(wiki_params)
+    @user = current_user
+    @wiki = Wiki.new(wiki_params)
     @wiki.user = current_user
-    @user_options = User.all.map { |u| [ u.email, u.id] }
     authorize @wiki
 
     if @wiki.save
       redirect_to @wiki, notice: "Wiki was saved successfully."
     else
       flash[:error] = "Error creating wiki. Please try again."
+      render :new
     end
   end
 
   def edit
     @wiki = Wiki.find(params[:id])
+    @users = User.all
+    @collaborator = Collaborator.new
     authorize @wiki
   end
 
