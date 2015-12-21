@@ -13,7 +13,6 @@
      </div>
   <% end %>
 
-  <% byebug %>
   <%= collection_check_boxes(:wiki, :user_ids, User.all - [f.object.user], :id, :email) do |u| %>
     <div class="checkbox">
       <%= u.label do %>
