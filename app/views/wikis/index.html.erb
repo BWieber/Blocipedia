@@ -9,7 +9,7 @@
           <div class="media">
             <div class="media-body">
               <h4 class="media-heading">
-                <%= link_to markdown(wiki.title), wiki %>
+                <%= link_to markdown(wiki.title), wiki %> <% if wiki.private? %> PRIVATE <% end %>
               </h4>
               <small>
                 <%= markdown(wiki.body) %> ________________________________________________________________________________________
@@ -18,5 +18,4 @@
           </div>
         <% end %>
       </div>
-
-  </div>
+    </div>
