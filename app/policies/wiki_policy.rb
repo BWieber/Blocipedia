@@ -9,7 +9,7 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.role == 'admin'
+    user.role == 'admin' || record.user == user
   end
 
   def new?
