@@ -6,6 +6,7 @@ include Faker
     user = User.create!(
     email:    Faker::Internet.email,
     password: Faker::Internet.password
+    confirmed_at: Time.now
     )
   end
 
@@ -15,12 +16,14 @@ include Faker
   email:    'admin@example.com',
   password: 'helloworld',
   role:     'admin'
+  confirmed_at: Time.now
   )
 
   #Create a standard member
   member = User.create!(
   email:    'member@example.com',
   password: 'helloworld'
+  confirmed_at: Time.now
   )
 
   #Create a premium member
@@ -28,6 +31,7 @@ include Faker
     email:    'premium@example.com',
     password: 'helloworld',
     role:     'premium'
+    confirmed_at: Time.now
   )
 
   #2nd Premium member
@@ -35,6 +39,7 @@ include Faker
     email:    'premium2@example.com',
     password: 'helloworld',
     role:     'premium'
+    confirmed_at: Time.now
   )
 
   users = User.all

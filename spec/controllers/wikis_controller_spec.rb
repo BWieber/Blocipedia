@@ -3,11 +3,11 @@ include RandomData
 
 RSpec.describe WikisController, type: :controller do
 
-  let(:my_wiki) { create(:wiki) }
+  let(:my_user)  { create(:user) }
+  let(:my_wiki) { create(:wiki, user: my_user) }
 
-  before :example do
-  u = User.create!(email: "me@home.com", password: "watching the telly")
-  sign_in u
+  before(:each) do
+    sign_in my_user
   end
 
   context "member doing CRUD action on wikis" do

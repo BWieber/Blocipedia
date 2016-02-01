@@ -10,5 +10,5 @@
 #   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
 
-SENDGRID_PASSWORD:
-SENDGRID_USERNAME:
+MAILGUN_SMTP_LOGIN: postmaster@app088d023c61fd4c2eaf20a535e1147a4e.mailgun.org
+MAILGUN_SMTP_PASSWORD: 359af4ccc79f3382e1effeed1aa501a4
