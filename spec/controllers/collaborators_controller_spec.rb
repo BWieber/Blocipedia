@@ -6,6 +6,7 @@ RSpec.describe CollaboratorsController, type: :controller do
   let(:premium)       { create(:user, role: 'premium')}
   let(:my_wiki)       { create(:wiki) }
   let(:private_wiki)  { create(:wiki, private: true)}
+  let(:collaborator)  { create(:collaborator, wiki_id: my_wiki.id, user_id: my_user.id) }
 
   before(:each) do
     sign_in my_user
@@ -16,7 +17,7 @@ RSpec.describe CollaboratorsController, type: :controller do
       expect{ post :create, wiki_id: my_wiki.id, user_id: my_user.id, collaborator: {}}.to change(Collaborator,:count).by(1)
     end
 
-    it "assigns the new post to @post" do
+    it "assigns the new post to @collaborator" do
       post :create, wiki_id: my_wiki.id, user_id: my_user.id, collaborator: {}
       expect(assigns(:collaborator)).to eq Collaborator.last
     end
@@ -27,9 +28,16 @@ RSpec.describe CollaboratorsController, type: :controller do
     end
   end
 
-  # describe "DELETE destroy" do
-  #   it "returns http redirect"
-  #
-  #   
-  # end
+  describe "DELETE destroy" do
+    it "returns http redirect" do
+      delete :destroy, wiki_id: my_wiki.id, id: collaborator.id
+      count = Collaborator.where({id: collaborator.id}).count
+      expect(count).to eq 0
+    end
+
+    it "redirects to the wiki index view" do
+      delete :destroy, wiki_id: my_wiki.id, id: collaborator.id
+      expect(response).to redirect_to my_wiki
+    end
+  end
 end
