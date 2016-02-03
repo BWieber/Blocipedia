@@ -26,4 +26,10 @@ RSpec.describe CollaboratorsController, type: :controller do
       expect(response).to redirect_to [my_wiki]
     end
   end
+
+  # describe "DELETE destroy" do
+  #   it "returns http redirect"
+  #
+  #   
+  # end
 end
