@@ -29,7 +29,7 @@ This app was created as part of the [Bloc](www.bloc.io) Full Stack Web Developme
 + Environment variables were set using Figaro and are stored in config/application.yml (ignored by git).
 
 + The config/application.example.yml file illustrates how environment variables should be stored.
-+
+
 ** To run Blocipedia locally: **
 
 + Clone the repository
