@@ -30,7 +30,7 @@ This app was created as part of the [Bloc](www.bloc.io) Full Stack Web Developme
 
 + The config/application.example.yml file illustrates how environment variables should be stored.
 
-** To run Blocipedia locally: **
+**To run Blocipedia locally:**
 
 + Clone the repository
 + Run bundle install
