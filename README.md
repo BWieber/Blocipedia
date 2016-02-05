@@ -34,9 +34,9 @@ This app was created as part of the [Bloc](www.bloc.io) Full Stack Web Developme
 
 + Clone the repository
 + Run bundle install
-+ Create and migrate the SQLite database with rake db:create and rake db:migrate
-+ Start the server using rails server
-+ Run the app on localhost:3000
++ Create and migrate the SQLite database with `rake db:create` and `rake db:migrate`
++ Start the server using `rails server`
++ Run the app on `localhost:3000`
 
 **Features**
 
