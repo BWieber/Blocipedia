@@ -5,8 +5,18 @@
 Blocipedia is a Ruby on Rails application that allows users to create wikis and collaborate on other wikis. Users can pay to upgrade their membership, allowing them to view and create private wikis.
 
 The app is deployed on Heroku: https://bwieber-blocipedia.herokuapp.com
+
 The source code is here on GitHub: https://github.com/BWieber/Blocipedia
+
 This app was created as part of the [Bloc](www.bloc.io) Full Stack Web Development course.
+
+# Features
+
++ Users can create a standard account in order to create, edit, and collaborate on public wikis using Markdown syntax. Anyone can view public wikis.
++ Users can pay to upgrade their account to Premium in order to view and create private wikis.
++ Premium users can allow others to view and collaborate on the private wikis they create.
++ Premium users can downgrade their account back to Standard.
++ When a user downgrades his or her account, his or her private wikis will automatically become public.
 
 # Setup and Configuration
 
@@ -37,11 +47,3 @@ This app was created as part of the [Bloc](www.bloc.io) Full Stack Web Developme
 + Create and migrate the SQLite database with `rake db:create` and `rake db:migrate`
 + Start the server using `rails server`
 + Run the app on `localhost:3000`
-
-**Features**
-
-+ Users can create a standard account in order to create, edit, and collaborate on public wikis using Markdown syntax. Anyone can view public wikis.
-+ Users can pay to upgrade their account to Premium in order to view and create private wikis.
-+ Premium users can allow others to view and collaborate on the private wikis they create.
-+ Premium users can downgrade their account back to Standard.
-+ When a user downgrades his or her account, his or her private wikis will automatically become public.
