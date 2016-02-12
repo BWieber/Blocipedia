@@ -7,6 +7,7 @@ gem 'devise'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
+gem 'faker'
 
 gem 'stripe'
 gem 'figaro', '1.0'
@@ -33,5 +34,4 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'shoulda'
   gem 'factory_girl_rails', '~> 4.0'
-  gem 'faker'
 end
