@@ -17,3 +17,8 @@
         <%= render partial: 'collaborators/users' %>
       <% end %>
     <% end %>
+
+
+    <% content_for :analytic do %>
+      <script type="text/javascript"> $(document).ready(function(){ blocmetrics.report("Wiki Show"); }); </script>
+    <% end %>

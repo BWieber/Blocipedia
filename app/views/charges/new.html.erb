@@ -4,3 +4,7 @@
   <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount=<%= @stripe_btn_data[:amount] %> data-description="<%= @stripe_btn_data[:description] %>" ></script>
     </div>
 <% end %>
+
+<% content_for :analytic do %>
+  <script type="text/javascript"> $(document).ready(function(){ blocmetrics.report("Payment Page Visit"); }); </script>
+<% end %>
